@@ -155,7 +155,10 @@ function Information() {
         return newDate;
     }
 
-
+    // scrollTo
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []); 
 
     // useEffect
     // Carosel用資料抓取
