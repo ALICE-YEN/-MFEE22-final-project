@@ -123,7 +123,7 @@ function InformationDetails() {
                         </>      
                     )
                 }
-            })()} {/* IIFE */}
+            })()} {/* IIFE */} 
             {/* </div> */}
             {/* container-fluid */}
 
@@ -334,17 +334,44 @@ function InformationDetails() {
                                 </div>
 
                                 <div className="d-flex justify-content-between mb-5">
-                                {prevData.map((prevDataItem, i) => {
+
+                                {/* 因應SQL壞掉重寫的 */}
+                                {(() => {
+                                    if(prevData.length === 0) {
+                                        return (
+                                            <div className="prevNextBoxInfo h5 gray text-start">沒有更多文章了~看看其他分類文章吧<br/><Link to={`/information`}>返回文章分類主頁面</Link></div>
+                                        );
+                                    }
+                                    else {
+
+                                        return (
+                                            prevData.map((prevDataItem, i) => {
+                                                return (
+                                                    <React.Fragment key={prevDataItem.info_id}>
+                                                    <div className="prevNextBoxInfo h5 text-start">
+                                                        <a className="h5" href="" onClick={()=> navigate(`/information/${prevDataItem.info_no}`)}>{prevDataItem.big_title}</a>
+                                                    </div>
+                                                    </React.Fragment>
+                                                ); // map-return結尾
+                                            }) // map-function結尾
+                                        ); // else-return結尾
+                                    } // function結尾
+                                })()}
+                                {/* IIFE結尾 */}
+
+
+                                {/* 原來SQL沒壞掉時寫的 */}
+                                {/* {prevData.map((prevDataItem, i) => {
                                     return (
                                     <React.Fragment key={prevDataItem.info_id}>
-
+                                    
                                     {prevDataItem.big_title === null ? <div className="prevNextBoxInfo h5 gray text-start">沒有更多文章了~看看其他分類文章吧<br/><Link to={`/information`}>返回文章分類主頁面</Link></div> : <div className="prevNextBoxInfo h5 text-start">
                                         <a className="h5" href="" onClick={()=> navigate(`/information/${prevDataItem.info_no}`)}>{prevDataItem.big_title}</a>
                                     </div>}
 
                                     </React.Fragment>
                                     )
-                                })}
+                                })} */}
 
                                 {nextData.map((nextDataItem, i) => {
                                     return (
