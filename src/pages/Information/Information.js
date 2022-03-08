@@ -445,7 +445,7 @@ function Information() {
                         {searchWord !== "" && allInfo.length === 0 ? <>
                         
                             <div className="col-6 col-lg-6 p-5 text-center">
-                                <h2>很抱歉，沒有與 "<span style={{color: "#17a8a2"}}>{searchWord}</span>" 相關的文章～<br/>請換換別的關鍵字試試看！</h2>
+                                <h2>未找到與 "<span style={{color: "#17a8a2"}}>{searchWord}</span>" 相關的文章，<br/>請換換別的關鍵字試試看！</h2>
                             </div>
 
                         </> : <>
@@ -532,7 +532,7 @@ function Information() {
                         {catOneSearchWord !== "" && catOneInfo.length === 0 ? <>
                         
                             <div className="col-6 col-lg-6 p-5 text-center">
-                                <h2>很抱歉，沒有與 "<span style={{color: "#17a8a2"}}>{catOneSearchWord}</span>" 相關的文章～<br/>請換換別的關鍵字試試看！</h2>
+                                <h2>未找到與 "<span style={{color: "#17a8a2"}}>{catOneSearchWord}</span>" 相關的文章，<br/>請換換別的關鍵字試試看！</h2>
                             </div>
 
                         </> : <>
@@ -617,7 +617,7 @@ function Information() {
                         {catTwoSearchWord !== "" && catTwoInfo.length === 0 ? <>
                         
                             <div className="col-6 col-lg-6 p-5 text-center">
-                                <h2>很抱歉，沒有與 "<span style={{color: "#17a8a2"}}>{catTwoSearchWord}</span>" 相關的文章～<br/>請換換別的關鍵字試試看！</h2>
+                                <h2>未找到與 "<span style={{color: "#17a8a2"}}>{catTwoSearchWord}</span>" 相關的文章，<br/>請換換別的關鍵字試試看！</h2>
                             </div>
 
                         </> : <>
