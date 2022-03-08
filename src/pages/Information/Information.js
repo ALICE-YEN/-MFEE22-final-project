@@ -424,7 +424,7 @@ function Information() {
                                     />
                             {/* </form> */}
                         </div>
-                        <div className="d-flex justify-content-center">
+                        <div className="d-flex justify-content-center pt-3">
                                     <input
                                     type="text"
                                     placeholder="  🔍  以關鍵字搜尋"
