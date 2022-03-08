@@ -14,6 +14,9 @@ const MemberOrder = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const { auth, setAuth } = useAuth();
   const [pages, setPages] = useState([]);
+  const [updatedOrderId, setUpdatedOrderId] = useState('');
+  const [updatedOrderStatus, setUpdatedOrderStatus] = useState('');
+
   // 為了處理網址
   let navigate = useNavigate();
 
@@ -38,16 +41,6 @@ const MemberOrder = () => {
     if (response.data.isDeleted) {
       setData(data.filter((order) => order.id !== order_id));
     }
-    // console.log(response.data);
-    // if (response.data.isDeleted) {
-    //   const updatedOrders = data.map((order) => {
-    //     return Object.assign(order, {
-    //       status: '訂單已取消',
-    //       valid: 2,
-    //     });
-    //   });
-    //   setData(updatedOrders);
-    // }
   }
 
   async function getMemberOrderList(page = 1) {
@@ -64,6 +57,15 @@ const MemberOrder = () => {
     setPages(response.data.pagination.pages);
     console.log('orders', orders);
   }
+
+  setInterval(() => {
+    if (updatedOrderId !== localStorage.getItem('updatedOrderId')) {
+      setUpdatedOrderId(localStorage.getItem('updatedOrderId'));
+    }
+    if (updatedOrderStatus !== localStorage.getItem('updatedOrderStatus')) {
+      setUpdatedOrderStatus(localStorage.getItem('updatedOrderStatus'));
+    }
+  }, 500);
 
   function changePage(page) {
     setCurrentPage(page);
@@ -138,10 +140,15 @@ const MemberOrder = () => {
                       <td>{order_list.amount}</td>
                       <td
                         className={`prepareColorMember ${
-                          order_list.status === '訂單已完成' ? 'black' : ''
+                          order_list.memberStatus === '訂單已完成'
+                            ? 'black'
+                            : ''
                         }`}
                       >
-                        {order_list.status}
+                        {/* {order_list.status} */}
+                        {updatedOrderId == order_list.id
+                          ? updatedOrderStatus
+                          : order_list.status}
                       </td>
                     </tr>
                   );

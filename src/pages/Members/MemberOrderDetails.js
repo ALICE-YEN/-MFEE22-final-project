@@ -19,6 +19,7 @@ function MemberOrderDetails(props) {
   // // 把網址上的 :order_id 拿出來
   const { auth, setAuth } = useAuth();
   const { order_id } = useParams();
+  const [freight, setFreight] = useState(0);
 
   async function handleCancel(order_id) {
     const { isConfirmed } = await Swal.fire({
@@ -46,7 +47,8 @@ function MemberOrderDetails(props) {
         });
       });
       setData(updatedOrders);
-      // TODO: redirect to order list
+      localStorage.setItem('updatedOrderId', order_id);
+      localStorage.setItem('updatedOrderStatus', '訂單已取消');
     }
   }
 
@@ -56,6 +58,13 @@ function MemberOrderDetails(props) {
         `${API_URL}/member/member-orderdetails/${order_id}`
       );
       setData(response.data);
+      console.log(response.data.price, response.data.quantity);
+      // 加上運費
+      if (response.data[0].price * response.data[0].quantity < 5000) {
+        // 運費120
+        setFreight(120);
+      }
+      localStorage.setItem('status', data.status);
     };
     getMemberOrderDetails();
   }, []);
@@ -77,7 +86,10 @@ function MemberOrderDetails(props) {
               return (
                 <h2 className="text-center gray">
                   合計：NT${' '}
-                  {data.reduce((pre, cur) => pre + cur.price * cur.quantity, 0)}
+                  {data.reduce(
+                    (pre, cur) => pre + cur.price * cur.quantity,
+                    0
+                  ) + freight}
                 </h2>
               );
           })}
@@ -215,7 +227,7 @@ function MemberOrderDetails(props) {
                             </div> */}
                                   <div className="row d-flex justify-content-end">
                                     <p className="col-6 text-start">運費：</p>
-                                    <p className="col-6">NT$0</p>
+                                    <p className="col-6">NT${freight}</p>
                                   </div>
                                   <div className="row d-flex justify-content-end">
                                     <p className="col-6 text-start">合計：</p>
@@ -225,7 +237,7 @@ function MemberOrderDetails(props) {
                                         (pre, cur) =>
                                           pre + cur.price * cur.quantity,
                                         0
-                                      )}
+                                      ) + freight}
                                     </p>
                                   </div>
                                 </div>
