@@ -95,14 +95,14 @@ function CourseCart02(props) {
 
       //報名完清除暫存
       // window.alert('你已報名完成');
-      localStorage.clear('course');
-      localStorage.clear('courseSpot');
-      localStorage.clear('courseDate');
-      localStorage.clear('courseTime');
-      localStorage.clear('coursePrice');
-      localStorage.clear('amount');
-      localStorage.clear('count');
-      localStorage.clear('payMethod');
+      localStorage.removeItem('course');
+      localStorage.removeItem('courseSpot');
+      localStorage.removeItem('courseDate');
+      localStorage.removeItem('courseTime');
+      localStorage.removeItem('coursePrice');
+      localStorage.removeItem('amount');
+      localStorage.removeItem('count');
+      localStorage.removeItem('payMethod');
       setStep({ ...step, step2: '', step3: true });
     }
   }
