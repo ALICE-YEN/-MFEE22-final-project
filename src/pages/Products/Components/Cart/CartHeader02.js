@@ -1,9 +1,9 @@
-// CartHeader01.js 內容說明：購物車三步驟的進度條
+// CartHeader02.js 內容說明：購物車三步驟的進度條
 
 import React from 'react';
 import greenTitle from '../../../../data/images/greenTitle.svg';
 
-function ProductAddCart(props) {
+function CartHeader02(props) {
   return (
     <>
       <header className="rwdMargin5 py-2 rwdPaddingX5">
@@ -17,29 +17,31 @@ function ProductAddCart(props) {
           />
           衝浪商品購物車
         </div>
-        <div className="d-flex justify-content-evenly">
-          <div className="d-flex align-items-center shadow py-2 cartStepsSigns borderRadius">
-            <div className="fs-1 w-25 text-center">01</div>
-            <div className="w-75">
-              確認清單 & 付款及配送方式
-              <br />
-              Cart & Check out
+        <div className="row">
+          <div className="cartHeaderTotal">
+            <div className="col-lg-3 d-flex align-items-center shadow py-2 cartStepsSigns borderRadius">
+              <div className="fs-1 carHeader20 text-center">01</div>
+              <div className="carHeader80">
+                確認清單 & 付款及配送方式
+                <br />
+                Cart & Check out
+              </div>
             </div>
-          </div>
-          <div className="d-flex justify-content-evenly align-items-center shadow py-2 cartStepsSigns cartStepsSignsOrange borderRadius">
-            <div className="fs-1 w-25 text-center">02</div>
-            <div className="w-75">
-              填寫訂購資料
-              <br />
-              Shipping & Billing Info
+            <div className="col-lg-3 d-flex align-items-center shadow py-2 cartStepsSignsOrange borderRadius">
+              <div className="fs-1 carHeader20 text-center">02</div>
+              <div className="carHeader80">
+                填寫訂購資料
+                <br />
+                Shipping & Billing Info
+              </div>
             </div>
-          </div>
-          <div className="d-flex justify-content-evenly align-items-center shadow py-2 cartStepsSigns borderRadius">
-            <div className="fs-1 w-25 text-center">03</div>
-            <div className="w-75">
-              購物完成！
-              <br />
-              Order completed
+            <div className="col-lg-3 d-flex align-items-center shadow py-2 cartStepsSigns borderRadius">
+              <div className="fs-1 carHeader20 text-center">03</div>
+              <div className="carHeader80">
+                購物完成！
+                <br />
+                Order completed
+              </div>
             </div>
           </div>
         </div>
@@ -48,4 +50,4 @@ function ProductAddCart(props) {
   );
 }
 
-export default ProductAddCart;
+export default CartHeader02;

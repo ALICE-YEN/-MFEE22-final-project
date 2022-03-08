@@ -54,7 +54,7 @@
 .rwdMarginS3 {
   margin-left: 16px;
 }
-.cartHeaderTotal{
+.cartHeaderTotal {
   display: flex;
   justify-content: space-evenly;
 }
@@ -117,6 +117,16 @@
 .carHeader20 {
   width: 20%;
 }
+@media screen and (max-width: 480px) {
+  .cartStepsSigns {
+    background-color: $funwave-lightgray;
+    margin-bottom: 8px;
+  }
+  .cartStepsSignsOrange {
+    background: $orange;
+    margin-bottom: 8px;
+  }
+}
 
 // 步驟1
 .countButton {
@@ -149,7 +159,7 @@
   .modify {
     width: 50%;
   }
-  .cartHeaderTotal{
+  .cartHeaderTotal {
     display: block;
   }
 }

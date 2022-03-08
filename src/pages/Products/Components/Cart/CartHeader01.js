@@ -1,9 +1,9 @@
-// CartHeader02.js 內容說明：購物車三步驟的進度條
+// CartHeader01.js 內容說明：購物車三步驟的進度條
 
 import React from 'react';
 import greenTitle from '../../../../data/images/greenTitle.svg';
 
-function ProductAddCart(props) {
+function CartHeader01(props) {
   return (
     <>
       <header className="rwdMargin5 py-2 rwdPaddingX5">
@@ -50,4 +50,4 @@ function ProductAddCart(props) {
   );
 }
 
-export default ProductAddCart;
+export default CartHeader01;
