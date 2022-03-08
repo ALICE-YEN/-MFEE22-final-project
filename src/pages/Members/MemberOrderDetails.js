@@ -50,7 +50,6 @@ function MemberOrderDetails(props) {
       localStorage.setItem('updatedOrderId', order_id);
       localStorage.setItem('updatedOrderStatus', '訂單已取消');
     }
-    // TODO: redirect to order list
   }
 
   useEffect(() => {
@@ -60,8 +59,9 @@ function MemberOrderDetails(props) {
       );
       setData(response.data);
       console.log(response.data.price, response.data.quantity);
+      // 加上運費
       if (response.data[0].price * response.data[0].quantity < 5000) {
-        // 120運費
+        // 運費120
         setFreight(120);
       }
       localStorage.setItem('status', data.status);
