@@ -11,7 +11,7 @@ function Customized() {
     <>
       <div className="container-fluid bannerCu">
         <div className="titleTopCu">
-          <div className="d-flex justify-content-center align-items-end titleTop">
+          <div className="d-flex justify-content-center align-items-end titleTop text-center">
             <h4>Design a Custom Surfboard.</h4>
           </div>
           <div className="d-flex justify-content-center align-items-start titleBottom">
