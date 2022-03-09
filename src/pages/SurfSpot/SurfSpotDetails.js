@@ -189,17 +189,17 @@ function SurfSpotDetails(props) {
                             </Col>
                           </Row>
                           <Row className="mb-2">
-                            <Col className="text-center">
+                            <Col className="text-center detailPadding">
                               {information.dryTime1}
                               <br />
                               {information.dryTime2}
                             </Col>
-                            <Col className="text-center">
+                            <Col className="text-center detailPadding">
                               {information.fullTime1}
                               <br />
                               {information.fullTime2}
                             </Col>
-                            <Col className="text-center mt-2">
+                            <Col className="text-center mt-2 detailPadding">
                               {information.sunsetTime}
                             </Col>
                           </Row>

@@ -1,94 +1,98 @@
 @import '../../styles/global.scss';
 
 // 遮罩
-.taiwanMapBgBlack{
-    background: rgba($color: #000000, $alpha: 0.6);
-    position: fixed;
-    top:0%;
-    left:0%; 
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    z-index: 999;
+.taiwanMapBgBlack {
+  background: rgba($color: #000000, $alpha: 0.6);
+  position: fixed;
+  top: 0%;
+  left: 0%;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  z-index: 999;
 }
-.spotDetailWrap{
-    background: url('../../data/images/surfSpot/surfSpotDetailBG.jpg') center center no-repeat;
-    border-radius: 8px;
-    background-size: cover;
-    margin-top: 8%;
+.spotDetailWrap {
+  background: url('../../data/images/surfSpot/surfSpotDetailBG.jpg') center
+    center no-repeat;
+  border-radius: 8px;
+  background-size: cover;
+  margin-top: 8%;
 }
-.spotDetailWrapBlack{
-    background: rgba(255, 255, 255, 0.8);
-    border-radius: 8px;
+.spotDetailWrapBlack {
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 8px;
 }
-.spotDetailCross{
-    transform: translate(-15px, 15px);
+.spotDetailCross {
+  transform: translate(-15px, 15px);
 }
-.spotInfo{
-    background: rgba(255, 255, 255, 0.9);
-    border-radius: 8px;
-    box-shadow: 1px 1px 15px 1px rgba(0, 0, 0, 0.1);
+.spotInfo {
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 8px;
+  box-shadow: 1px 1px 15px 1px rgba(0, 0, 0, 0.1);
 }
 .black {
-    color: $funwave-black;
-  }
-.locationIcon{
-    width: 20px;
-    height: 20px;
+  color: $funwave-black;
+}
+.locationIcon {
+  width: 20px;
+  height: 20px;
 }
 
 // 風向16方位
-.N{
-    transform: rotate(-45deg);
+.N {
+  transform: rotate(-45deg);
 }
-.NNE{
-    transform: rotate(-22.5deg);
+.NNE {
+  transform: rotate(-22.5deg);
 }
-.NE{
-    transform: rotate(0deg);
+.NE {
+  transform: rotate(0deg);
 }
-.ENE{
-    transform: rotate(22.5deg);
+.ENE {
+  transform: rotate(22.5deg);
 }
-.E{
-    transform: rotate(45deg);
+.E {
+  transform: rotate(45deg);
 }
-.ESE{
-    transform: rotate(67.5deg);
+.ESE {
+  transform: rotate(67.5deg);
 }
-.SE{
-    transform: rotate(90deg);
+.SE {
+  transform: rotate(90deg);
 }
-.SSE{
-    transform: rotate(112.5deg);
+.SSE {
+  transform: rotate(112.5deg);
 }
-.S{
-    transform: rotate(135deg);
+.S {
+  transform: rotate(135deg);
 }
-.SSW{
-    transform: rotate(157.5deg);
+.SSW {
+  transform: rotate(157.5deg);
 }
-.SW{
-    transform: rotate(180deg);
+.SW {
+  transform: rotate(180deg);
 }
-.WSW{
-    transform: rotate(202.5deg);
+.WSW {
+  transform: rotate(202.5deg);
 }
-.W{
-    transform: rotate(225deg);
+.W {
+  transform: rotate(225deg);
 }
-.WNW{
-    transform: rotate(247.5deg);
+.WNW {
+  transform: rotate(247.5deg);
 }
-.NW{
-    transform: rotate(270deg);
+.NW {
+  transform: rotate(270deg);
 }
-.NNW{
-    transform: rotate(292.5deg);
+.NNW {
+  transform: rotate(292.5deg);
 }
 
-@media screen and (max-width: 400px){
-    .spotDetailWrap{
-        margin-top: 18%
-    }
-};
+@media screen and (max-width: 400px) {
+  .spotDetailWrap {
+    margin-top: 18%;
+  }
+  .detailPadding {
+    padding: 0 !important;
+  }
+} ;
