@@ -44,23 +44,85 @@ function MemberInfo(props) {
     }
   }, 500);
 
-  async function memberSubmit(e) {
+  async function handleSubmit(e) {
+    const form = e.currentTarget;
     e.preventDefault();
 
-    let msgData = new FormData();
-    console.log(41, JSON.stringify(member));
-    msgData.append('data', JSON.stringify(member));
-    if (photo) msgData.append('photo', photo);
-
-    let response = await axios.post(
-      `${API_URL}/member/${member.member_id}`,
-      msgData
-    );
-    Swal.fire('儲存成功');
-    localStorage.setItem('name', member.member_name);
-    if (response.data.filename) {
-      localStorage.setItem('member_photo', response.data.filename);
+    // Regex
+    let nameRegex = /\S/;
+    let emailRegex = /[\w-]+@([\w-]+\.)+[\w-]+/;
+    let passwordRegex = /^\d{6,}$/;
+    let phoneRegex = /^09\d{2}-?\d{3}-?\d{3}$/;
+    if (!nameRegex.test(document.getElementById('member_name').value)) {
+      e.stopPropagation();
+      // return;
+      document.getElementById('member_name').classList.add('reg');
+      document.getElementById('name_error').textContent = '名字不可為空';
+    } else {
+      document.getElementById('member_name').classList.remove('reg');
+      document.getElementById('name_error').textContent = '';
     }
+    if (!emailRegex.test(document.getElementById('member_email').value)) {
+      e.stopPropagation();
+      // return;
+      document.getElementById('member_email').classList.add('reg');
+      document.getElementById('email_error').textContent = 'email格式錯誤';
+    } else {
+      document.getElementById('member_email').classList.remove('reg');
+      document.getElementById('email_error').textContent = '';
+    }
+    if (!passwordRegex.test(document.getElementById('password').value)) {
+      e.stopPropagation();
+      // return;
+      document.getElementById('password').classList.add('reg');
+      document.getElementById('password_error').textContent = '長度至6位數';
+    } else {
+      document.getElementById('password').classList.remove('reg');
+      document.getElementById('password_error').textContent = '';
+    }
+    if (!phoneRegex.test(document.getElementById('member_phone').value)) {
+      e.stopPropagation();
+      // return;
+      document.getElementById('member_phone').classList.add('reg');
+      document.getElementById('phone_error').textContent =
+        '手機需為09開頭10位數';
+    } else {
+      document.getElementById('member_phone').classList.remove('reg');
+      document.getElementById('phone_error').textContent = '';
+    }
+    // if (!phoneRegex.test(document.getElementById('receiver_phone').value)) {
+    //   e.stopPropagation();
+    //   // return;
+    //   document.getElementById('receiver_phone').classList.add('reg');
+    //   document.getElementById('receiver_phone_error').textContent =
+    //     '手機需為09開頭10位數';
+    //   // return;
+    // } else {
+    //   document.getElementById('receiver_phone').classList.remove('reg');
+    //   document.getElementById('receiver_phone_error').textContent = '';
+    // }
+    // /Regex
+
+    if (form.checkValidity() === false) {
+      e.stopPropagation();
+    } else {
+      let msgData = new FormData();
+      console.log(41, JSON.stringify(member));
+      msgData.append('data', JSON.stringify(member));
+      if (photo) msgData.append('photo', photo);
+
+      let response = await axios.post(
+        `${API_URL}/member/${member.member_id}`,
+        msgData
+      );
+      Swal.fire('儲存成功');
+      localStorage.setItem('name', member.member_name);
+      if (response.data.filename) {
+        localStorage.setItem('member_photo', response.data.filename);
+      }
+    }
+
+    setValidated(true);
   }
 
   // 大頭貼更換
@@ -80,15 +142,15 @@ function MemberInfo(props) {
   const [type, setType] = useState('password');
   const [validated, setValidated] = useState(false);
 
-  // 空值驗證
-  const handleSubmit = (event) => {
-    const form = event.currentTarget;
-    if (form.checkValidity() === false) {
-      event.preventDefault();
-      event.stopPropagation();
-    }
-    setValidated(true);
-  };
+  // // 空值驗證
+  // const handleSubmit = (event) => {
+  //   const form = event.currentTarget;
+  //   if (form.checkValidity() === false) {
+  //     event.preventDefault();
+  //     event.stopPropagation();
+  //   }
+  //   setValidated(true);
+  // };
 
   useEffect(() => {
     axios.get(`${API_URL}/member/${auth.member_id}`).then((response) => {
@@ -195,6 +257,7 @@ function MemberInfo(props) {
                   }
                   onChange={handleChange}
                 />
+                <div id="name_error" style={{ color: 'red' }}></div>
               </Form.Group>
               <Form.Group className="col-12">
                 <Form.Label className="col-12 mt-3 mb-1 fs-16Member">
@@ -213,6 +276,7 @@ function MemberInfo(props) {
                   }
                   onChange={handleChange}
                 />
+                <div id="email_error" style={{ color: 'red' }}></div>
               </Form.Group>
               <Form.Group
                 className="col-12 passwordMember"
@@ -230,6 +294,7 @@ function MemberInfo(props) {
                   defaultValue=""
                   onChange={handleChange}
                 />
+                <div id="password_error" style={{ color: 'red' }}></div>
                 <Form.Label className="passwordImgMember">
                   <i
                     className={`loginEye passwordImgMember ${close}`}
@@ -258,6 +323,7 @@ function MemberInfo(props) {
                   defaultValue={member.member_phone}
                   onChange={handleChange}
                 />
+                <div id="phone_error" style={{ color: 'red' }}></div>
               </Form.Group>
               <Form.Group className="col-12">
                 <Form.Label className="col-12 mt-3 mb-1 fs-16Member">
@@ -298,6 +364,7 @@ function MemberInfo(props) {
                   defaultValue={member.receiver_phone}
                   onChange={handleChange}
                 />
+                {/* <div id="receiver_phone_error" style={{ color: 'red' }}></div> */}
               </Form.Group>
               <Form.Group className="col-12">
                 <Form.Label className="col-12 mt-3 mb-1 fs-16Member">
@@ -336,7 +403,6 @@ function MemberInfo(props) {
                 <Button
                   type="submit"
                   className="btn btnMember saveMember text-nowrap fs-16Member"
-                  onClick={memberSubmit}
                 >
                   儲存變更
                 </Button>
